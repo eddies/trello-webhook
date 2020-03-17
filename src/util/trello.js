@@ -4,6 +4,13 @@ const { httpsRequest } = require('./httpsRequest');
 const apiKey = process.env.TRELLO_API_KEY;
 const token = process.env.TRELLO_TOKEN;
 
+if (!apiKey) {
+  console.error('Environment variable TRELLO_API_KEY is not set');
+}
+
+if (!token) {
+  console.error('Environment variable TRELLO_TOKEN is not set');
+}
 
 exports.getBoardId = async (cardId) => {
   const queryParams = querystring.stringify({

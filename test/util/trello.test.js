@@ -5,6 +5,13 @@ const {
 jest.mock('../../src/util/httpsRequest');
 const { httpsRequest } = require('../../src/util/httpsRequest');
 
+// Sanity test
+// these don't have to be real tests to pass
+test('required environment variables are set', () => {
+  expect(process.env.TRELLO_API_KEY).toBeDefined();
+  expect(process.env.TRELLO_TOKEN).toBeDefined();
+});
+
 test('putCustomField', async () => {
   httpsRequest.mockResolvedValue({
     id: '5b6c740402e6d67bb321e701',
